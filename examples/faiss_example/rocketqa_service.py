@@ -14,7 +14,7 @@ class FaissTool():
     def __init__(self, text_filename, index_filename):
         self.engine = faiss.read_index(index_filename)
         self.id2text = []
-        for line in open(text_filename):
+        for line in open(text_filename, encoding='utf8'):
             self.id2text.append(line.strip())
 
     def search(self, q_embs, topk=5):
@@ -117,13 +117,13 @@ def create_rocketqa_app(sub_address, rocketqa_server, language, data_file, index
 
     de_conf = {
         "model": de_model,
-        "use_cuda": True,
+        "use_cuda": True, # CPU版本更改为False
         "device_id": 0,
         "batch_size": 32
     }
     ce_conf = {
         "model": ce_model,
-        "use_cuda": True,
+        "use_cuda": True, # CPU版本更改为False
         "device_id": 0,
         "batch_size": 32
     }
