@@ -37,14 +37,14 @@ if __name__ == '__main__':
 
     para_list = []
     title_list = []
-    for line in open(data_file):
+    for line in open(data_file, encoding='utf8'):
         t, p = line.strip().split('\t')
         para_list.append(p)
         title_list.append(t)
 
     de_conf = {
             "model": model,
-            "use_cuda": True,
+            "use_cuda": True, # CPU版本更改为False
             "device_id": 0,
             "batch_size": 32
     }
